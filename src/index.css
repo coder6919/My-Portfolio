@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #8ed500;
+  --color-brand-dark: #76b000;
+  --color-bg: #0a0a0a;
+  --color-card: #141414;
+
+  --font-mono: "JetBrains Mono", monospace;
+
+  --background-image-scanline: linear-gradient(to bottom,
+      transparent 50%,
+      rgba(0, 0, 0, 0.5) 50%);
+}
+
+/* Custom 3D & Pattern Utilities */
+@layer base {
+  body {
+    @apply bg-bg text-white selection:bg-brand selection:text-black;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@utility custom-grid {
+  background: linear-gradient(135deg, #0000 18.75%, #f3f3f310 0 31.25%, #0000 0),
+    repeating-linear-gradient(45deg, #f3f3f310 -6.25% 6.25%, #141414 0 18.75%);
+  background-size: 60px 60px;
+}
+
+@utility perspective-1000 {
+  perspective: 1000px;
+}
+
+@utility preserve-3d {
+  transform-style: preserve-3d;
+}
+
+@utility bg-scanline {
+  background-image: var(--background-image-scanline);
+  background-size: 100% 4px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
