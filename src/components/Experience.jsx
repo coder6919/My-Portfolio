@@ -5,25 +5,25 @@ import { Briefcase, Calendar, MapPin, CheckCircle2 } from "lucide-react";
 const experiences = [
   {
     company: "Eduladdr Solutions",
-    role: "Web Development Intern",
-    date: "06/2023 – 09/2023",
+    role: "React Developer Intern",
+    date: "02/2025 – 05/2025",
     location: "Nagpur, India",
     points: [
-      "Developed 3 core web pages from scratch using HTML5 and CSS3, ensuring fully responsive layouts.",
+      "Built and modified React.js components and pages, refactoring legacy frontend code to improve consistency and responsiveness across mobile and desktop.",
       "Refactored and modernized existing legacy pages, correcting alignment issues and improving visual consistency.",
     ],
-    tech: ["HTML5", "CSS3", "Responsive Design", "Refactoring"]
+    tech: ["HTML5", "CSS3", "Responsive Design", "Refactoring", "React JS", "Git"]
   },
   {
     company: "DocTunes AudioTech Pvt.Ltd",
-    role: "Web Designer Intern",
-    date: "10/2022 – 01/2023",
+    role: "React Developer Intern",
+    date: "06/2024 – 01/2025",
     location: "Remote",
     points: [
-      "Translated Figma designs into reusable UI components (Navbars, Cards, Forms).",
+      "Built and maintained React.js components and pages, including custom hooks for reusable logic shared across the application.",
       "Managed code versions using Git, ensuring clean commit history and seamless integration.",
     ],
-    tech: ["Figma", "React UI", "Git", "UI/UX"]
+    tech: ["Figma", "React UI", "Git", "UI/UX", "Git"]
   }
 ];
 

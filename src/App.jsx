@@ -1,22 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-
 // Import custom components
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
 import ProjectCard from "./components/ProjectCard";
 import Skills from "./components/Skills";
 import LeetCodeCard from "./components/LeetCodeCard";
 import Experience from "./components/Experience";
 import Education from "./components/Education";
-
-
+import Lenis from "lenis"
+import Cursor from "./components/Cursor";
 // Import Icons for Footer
 import { Github, Linkedin, Mail, ExternalLink, Code2 } from "lucide-react";
+import Hero from "./components/Hero";
 
 function App() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
   return (
+
     <div className="bg-bg min-h-screen text-white selection:bg-brand selection:text-black scroll-smooth">
+      <Cursor />
+
       {/* 1. Navigation HUD */}
       <Navbar />
 
@@ -42,7 +58,8 @@ function App() {
             day="12"
             description="Scalable MERN backend on AWS Lambda. Achieved 92 PageSpeed & 179ms latency."
             stack={["React", "Node.js", "AWS Lambda", "MongoDB", "Redux"]}
-            screenshots={["/stream-ui.png", "/metrics.png"]} // Add your actual paths here
+            thumbnail="/yt1.webp"
+            screenshots={["/yt2.webp", "/yt3.webp"]} // Add your actual paths here
           />
 
           {/* Project 2: Java Microservices */}
