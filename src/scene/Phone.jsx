@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import * as THREE from "three";
+import { useHoverLabel } from "../interactions/hoverLabel";
 
 /**
  * 3D Smartphone on the workstation desk
@@ -7,6 +8,12 @@ import * as THREE from "three";
  * Positioned on the desk surface (y = 2.525) to the right of keyboard
  */
 function Phone({ position = [1.9, 2.525, 0.15], rotation = [0, 0.25, 0], onClick = null }) {
+    const hover = useHoverLabel("Phone", "Contact & socials");
+    const handleClick = (e) => {
+        e.stopPropagation();
+        onClick?.(e);
+    };
+
     const screenTexture = useMemo(() => {
         const canvas = document.createElement("canvas");
         canvas.width = 64;
@@ -61,7 +68,7 @@ function Phone({ position = [1.9, 2.525, 0.15], rotation = [0, 0.25, 0], onClick
     }, []);
 
     return (
-        <group position={position} rotation={rotation} onClick={onClick}>
+        <group position={position} rotation={rotation} onClick={handleClick} {...hover}>
             {/* Phone Body / Aluminum frame */}
             <mesh position={[0, 0.02, 0]} castShadow receiveShadow>
                 <boxGeometry args={[0.36, 0.03, 0.7]} />

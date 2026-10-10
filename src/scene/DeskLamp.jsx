@@ -7,6 +7,7 @@ import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import { useInteraction } from "../interactions/InteractionContext";
+import { useHoverLabel } from "../interactions/hoverLabel";
 import { PixelBeam } from "./textures/PixelBox";
 
 // Joint positions (lamp-local). The head hangs over the keyboard.
@@ -54,6 +55,7 @@ function ArmSegment({ from, to }) {
 
 function DeskLamp({ position = LAMP_POSITION.toArray() }) {
     const { lampOn, toggleLamp } = useInteraction();
+    const hover = useHoverLabel("Desk lamp", "Click to switch it on or off");
 
     const pointLightRef = useRef(null);
     const spotLightRef = useRef(null);
@@ -126,11 +128,7 @@ function DeskLamp({ position = LAMP_POSITION.toArray() }) {
         <group
             position={position}
             onClick={handleClick}
-            onPointerOver={(e) => {
-                e.stopPropagation();
-                document.body.style.cursor = "pointer";
-            }}
-            onPointerOut={() => (document.body.style.cursor = "default")}
+            {...hover}
         >
             {/* Weighted base and switch */}
             <mesh material={BODY} position={[0, 0.05, 0]} castShadow receiveShadow>

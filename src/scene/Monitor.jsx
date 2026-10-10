@@ -2,6 +2,7 @@
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useInteraction } from "../interactions/InteractionContext";
+import { useHoverLabel } from "../interactions/hoverLabel";
 import { monitorScreen, MONITOR_CURSOR } from "./textures/textTextures";
 
 const SCREEN = { width: 3.42, height: 2.12, y: 1.6, z: 0.14 };
@@ -16,6 +17,7 @@ import { StickyNote } from "./DeskNotes";
 
 function Monitor({ position = [0.2, 2.525, -0.7], rotation = [0, -0.12, 0] }) {
     const { openPanel, closePanel, activePanel } = useInteraction();
+    const hover = useHoverLabel("Terminal", "Open the portfolio");
 
     const screenTexture = monitorScreen();
     const cursorRef = useRef(null);
@@ -39,8 +41,7 @@ function Monitor({ position = [0.2, 2.525, -0.7], rotation = [0, -0.12, 0] }) {
             position={position}
             rotation={rotation}
             onClick={handleClick}
-            onPointerOver={() => (document.body.style.cursor = "pointer")}
-            onPointerOut={() => (document.body.style.cursor = "default")}
+            {...hover}
         >
             {/* Monitor Stand Base */}
             <mesh position={[0, 0.04, 0]} castShadow receiveShadow>

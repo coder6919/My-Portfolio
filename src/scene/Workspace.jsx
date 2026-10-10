@@ -30,6 +30,7 @@ import Succulent from "./Succulent";
 import Speakers from "./Speakers";
 import DeskNotes from "./DeskNotes";
 import Ambience from "./Ambience";
+import HoverTracker from "./HoverTracker";
 import CameraRig, { CAMERA_FOV, roomPixelRatio } from "./CameraRig";
 import { useIsPhone } from "./quality";
 
@@ -157,6 +158,7 @@ function Workspace() {
                 shadows={{ type: THREE.PCFShadowMap }}
             >
                 <CameraRig />
+                <HoverTracker />
                 <SceneContents />
                 {!isPhone && <PostEffects />}
             </Canvas>

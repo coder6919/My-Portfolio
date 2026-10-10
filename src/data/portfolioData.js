@@ -6,8 +6,8 @@
 
 export const profileData = {
     name: "Syed Saifuddin",
-    title: "Software Engineer",
-    subtitle: "Full Stack & AI/ML",
+    title: "AI/ML Engineer",
+    subtitle: "Python Developer",
     location: "Nagpur, India (Open to Relocate)",
     email: "ssaifssyed17@gmail.com",
     github: "https://github.com/coder6919",
@@ -16,10 +16,38 @@ export const profileData = {
     leetcode: "https://leetcode.com/u/saif619",
     leetcodeUsername: "saif619",
     resumeUrl: "/Syed_Saifuddin_ResuMe.pdf",
-    bio: "Software engineer building full-stack applications, scalable backend services, and production AI/RAG systems. Strong foundation in Computer Science and active competitive programmer.",
+    // Professional summary from the current resume.
+    bio: "Python developer focused on AI/ML and agentic systems — building Retrieval-Augmented Generation (RAG) pipelines, LLM orchestration, and semantic search applications using Python, LangChain, vector databases, and the Claude API. Comfortable owning an AI system end-to-end: data ingestion, retrieval and ranking logic, grounded generation, and evaluation. Backed by a software engineering foundation (full-stack development, REST APIs, production deployment) that supports building and shipping complete, working systems rather than isolated notebooks. Actively deepening machine learning fundamentals, NLP, and deep learning (TensorFlow, Scikit-learn) through a structured AI/ML certification program.",
 };
 
 export const projectsData = [
+    {
+        id: "rag-support-agent",
+        title: "RAG-Based Knowledge & Support Agent",
+        category: "AI / RAG Agent",
+        description: "Retrieval-Augmented Generation agent that answers questions from a real, messy document set (PDFs, tables, scanned files) with cited sources, addressing how support and knowledge teams waste time searching scattered internal docs.",
+        highlights: [
+            "Designed a hybrid retrieval pipeline (vector + keyword search) with cross-encoder reranking to improve retrieval precision over naive top-k vector search.",
+            "Implemented grounded generation with explicit refusal behavior for out-of-scope questions to reduce hallucination; evaluated with the Ragas framework across a 21-question set — 0.97 faithfulness, 0.90 context precision, 0.95 context recall, and 10/12 passed on adversarial, refusal, and conflicting-source checks — versus a naive top-k-only baseline that scored 0% on context precision and recall.",
+        ],
+        stack: ["Python", "LangChain", "Claude API", "Qdrant", "Hybrid Search"],
+        live: "https://ground-work-ashen.vercel.app/",
+        github: "https://github.com/coder6919/GroundWork",
+    },
+    {
+        id: "fraud-ring-detection",
+        title: "Graph-Based Fraud Ring Detection",
+        category: "Graph ML / Full Stack",
+        description: "Full-stack fraud ring detection system modeling 590K+ transactions as a 43K-node shared-identifier graph, using Louvain community detection (modularity ~0.50) to surface 86 candidate fraud rings — a network-structure signal a per-transaction classifier can't see by design.",
+        highlights: [
+            "Diagnosed a scoring-weight miscalibration and rebalanced the ring-scoring formula, raising top-ring precision from ~6% to 100% at the strictest threshold (50% at a broader tier); engineered noise-resistant graph construction (inverse-frequency edge dampening, hard exclusion cap) to stop generic shared identifiers from collapsing the graph into false connections.",
+            "Ran a matched-alert-volume comparison (76 alerts) against a held-out Random Forest baseline — 63% vs. 50% precision, 0.93% vs. 0.16% recall — and documented why recall is structurally capped for isolated, non-ring fraud rather than overstating results.",
+            "Shipped a live transaction-scoring feature: serialized the trained model behind a POST /score endpoint with an 8-field simplified input (feature-importance ranked), tying predictions back to the graph to flag known ring membership in real time; built a from-scratch force-directed graph visualization in React/SVG for interactive ring and account exploration.",
+        ],
+        stack: ["Python", "NetworkX", "FastAPI", "React", "D3", "Scikit-learn"],
+        live: "https://fraud-detection-ten-beryl.vercel.app/",
+        github: "https://github.com/coder6919/fraud-detection",
+    },
     {
         id: "video-streaming",
         title: "Video Streaming Platform",
@@ -69,25 +97,25 @@ export const projectsData = [
 export const experienceData = [
     {
         company: "Eduladdr Solutions",
-        role: "React Developer Intern",
+        role: "Software Engineer Intern",
         date: "02/2025 – 05/2025",
         location: "Nagpur, India",
         points: [
-            "Built and modified React.js components and production pages, refactoring legacy frontend code to improve consistency and responsiveness across mobile and desktop devices.",
-            "Refactored and modernized existing legacy pages, correcting alignment issues and establishing modular component patterns.",
+            "Refactored legacy application code to improve consistency, maintainability, and performance across the codebase.",
+            "Collaborated within an agile engineering team to ship incremental feature updates and resolve bugs across the development cycle.",
         ],
-        tech: ["HTML5", "CSS3", "Responsive Design", "Refactoring", "React.js", "Git"],
+        tech: ["Refactoring", "Agile", "Bug Fixing", "Feature Delivery"],
     },
     {
         company: "DocTunes AudioTech Pvt. Ltd",
-        role: "React Developer Intern",
+        role: "Software Engineer Intern",
         date: "06/2024 – 01/2025",
         location: "Remote",
         points: [
-            "Built and maintained React.js components, creating reusable custom hooks for shared state and API communication across the web platform.",
-            "Collaborated with UI/UX designers in Figma and managed code versions through Git, maintaining clean commit workflows.",
+            "Designed and built reusable software components and custom logic modules, integrating with backend REST APIs to support dynamic data flows across the application.",
+            "Used Git for version control and code collaboration, maintaining a clean commit history and coordinating seamless integration of updates across the codebase.",
         ],
-        tech: ["Figma", "React UI", "Custom Hooks", "Git", "UI/UX"],
+        tech: ["Reusable Components", "REST APIs", "Git"],
     },
 ];
 

@@ -73,9 +73,18 @@ export default function TerminalModal({ onClose, initialCommand = "whoami" }) {
                                 <div key={p.id} className="p-3.5 bg-slate-900/80 rounded border border-slate-800 space-y-2">
                                     <div className="flex justify-between items-start">
                                         <h3 className="font-bold text-white text-sm">{p.title}</h3>
-                                        <span className="text-[10px] text-amber-400 bg-amber-400/10 px-1.5 py-0.5 rounded border border-amber-400/20">{p.date}</span>
+                                        {p.date && (
+                                            <span className="text-[10px] text-amber-400 bg-amber-400/10 px-1.5 py-0.5 rounded border border-amber-400/20">{p.date}</span>
+                                        )}
                                     </div>
                                     <p className="text-xs text-slate-300 leading-relaxed">{p.description}</p>
+                                    {p.highlights?.length > 0 && (
+                                        <ul className="list-disc pl-4 space-y-1">
+                                            {p.highlights.map((h) => (
+                                                <li key={h} className="text-[11px] text-slate-400 leading-relaxed">{h}</li>
+                                            ))}
+                                        </ul>
+                                    )}
                                     <div className="flex flex-wrap gap-1.5 pt-1">
                                         {p.stack.map((t) => (
                                             <span key={t} className="text-[10px] bg-slate-800 text-sky-300 px-2 py-0.5 rounded border border-slate-700">
@@ -83,6 +92,20 @@ export default function TerminalModal({ onClose, initialCommand = "whoami" }) {
                                             </span>
                                         ))}
                                     </div>
+                                    {(p.live || p.github) && (
+                                        <div className="flex gap-4 pt-1 text-xs font-bold">
+                                            {p.live && (
+                                                <a href={p.live} target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">
+                                                    $ open live-demo
+                                                </a>
+                                            )}
+                                            {p.github && (
+                                                <a href={p.github} target="_blank" rel="noreferrer" className="text-sky-400 hover:underline">
+                                                    $ git clone
+                                                </a>
+                                            )}
+                                        </div>
+                                    )}
                                 </div>
                             ))}
                         </div>

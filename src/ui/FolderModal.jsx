@@ -118,9 +118,18 @@ export default function FolderModal({ category = "Projects", onClose }) {
                                                 <span style={{ fontSize: "10px", fontFamily: "monospace", color: "#38bdf8", textTransform: "uppercase", letterSpacing: "0.05em", display: "block" }}>{p?.category || "Project"}</span>
                                                 <h3 style={{ fontWeight: "bold", color: "#ffffff", fontSize: "15px", margin: "2px 0 0 0" }}>{p?.title}</h3>
                                             </div>
-                                            <span style={{ fontSize: "10px", color: "#fcd34d", backgroundColor: "rgba(252, 211, 77, 0.1)", padding: "2px 6px", borderRadius: "4px", fontFamily: "monospace" }}>{p?.date}</span>
+                                            {p?.date && (
+                                                <span style={{ fontSize: "10px", color: "#fcd34d", backgroundColor: "rgba(252, 211, 77, 0.1)", padding: "2px 6px", borderRadius: "4px", fontFamily: "monospace" }}>{p.date}</span>
+                                            )}
                                         </div>
                                         <p style={{ fontSize: "12px", color: "#cbd5e1", lineHeight: "1.5", margin: 0 }}>{p?.description}</p>
+                                        {p?.highlights?.length > 0 && (
+                                            <ul style={{ margin: "8px 0 0 0", paddingLeft: "16px", listStyleType: "disc", display: "flex", flexDirection: "column", gap: "6px" }}>
+                                                {p.highlights.map((h) => (
+                                                    <li key={h} style={{ fontSize: "11.5px", color: "#94a3b8", lineHeight: "1.5" }}>{h}</li>
+                                                ))}
+                                            </ul>
+                                        )}
                                     </div>
                                     <div style={{ paddingTop: "12px", borderTop: "1px solid #1e293b", display: "flex", flexDirection: "column", gap: "10px" }}>
                                         <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
@@ -130,16 +139,28 @@ export default function FolderModal({ category = "Projects", onClose }) {
                                                 </span>
                                             ))}
                                         </div>
-                                        {p?.github && (
-                                            <a
-                                                href={p.github}
-                                                target="_blank"
-                                                rel="noreferrer"
-                                                style={{ fontSize: "12px", fontFamily: "monospace", fontWeight: "bold", color: "#fcd34d", textDecoration: "underline" }}
-                                            >
-                                                View Source on GitHub →
-                                            </a>
-                                        )}
+                                        <div style={{ display: "flex", flexWrap: "wrap", gap: "14px" }}>
+                                            {p?.live && (
+                                                <a
+                                                    href={p.live}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    style={{ fontSize: "12px", fontFamily: "monospace", fontWeight: "bold", color: "#34d399", textDecoration: "underline" }}
+                                                >
+                                                    Live Demo →
+                                                </a>
+                                            )}
+                                            {p?.github && (
+                                                <a
+                                                    href={p.github}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    style={{ fontSize: "12px", fontFamily: "monospace", fontWeight: "bold", color: "#fcd34d", textDecoration: "underline" }}
+                                                >
+                                                    View Source on GitHub →
+                                                </a>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             ))}

@@ -1,4 +1,5 @@
 import { calendarPage } from "./textures/textTextures";
+import { useHoverLabel } from "../interactions/hoverLabel";
 
 /**
  * 3D Wall Calendar component
@@ -7,13 +8,13 @@ import { calendarPage } from "./textures/textTextures";
  */
 function Calendar({ position = [5.95, 5.25, -4.82], onClick = null }) {
     const calendarTexture = calendarPage();
+    const hover = useHoverLabel("Calendar", "Experience timeline");
 
     return (
         <group
             position={position}
             onClick={onClick}
-            onPointerOver={() => (document.body.style.cursor = "pointer")}
-            onPointerOut={() => (document.body.style.cursor = "default")}
+            {...hover}
         >
             {/* Top Wooden Hanging Bar */}
             <mesh position={[0, 0.98, 0.02]} castShadow>

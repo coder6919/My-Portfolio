@@ -5,6 +5,7 @@
 import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
+import { useHoverLabel } from "../interactions/hoverLabel";
 
 const mat = (color) =>
     new THREE.MeshStandardMaterial({ color, roughness: 0.92, flatShading: true });
@@ -41,6 +42,7 @@ function randomBetween(min, max) {
 
 function Cat({ position = [0, 0, 0], rotation = [0, 0, 0] }) {
     const bodyRef = useRef(null);
+    const hover = useHoverLabel("Cat", "Sleeping. Click to stir it");
     const headRef = useRef(null);
     const earRef = useRef(null);
     const tailRef = useRef(null);
@@ -106,11 +108,7 @@ function Cat({ position = [0, 0, 0], rotation = [0, 0, 0] }) {
             position={position}
             rotation={rotation}
             onClick={handleClick}
-            onPointerOver={(e) => {
-                e.stopPropagation();
-                document.body.style.cursor = "pointer";
-            }}
-            onPointerOut={() => (document.body.style.cursor = "default")}
+            {...hover}
         >
             {/* Body + calico patches breathe together */}
             <group ref={bodyRef}>

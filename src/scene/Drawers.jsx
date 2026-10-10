@@ -6,6 +6,7 @@ import { useInteraction } from "../interactions/InteractionContext";
 import { PixelBox } from "./textures/PixelBox";
 import { getMaterials } from "./textures/materials";
 import { drawerLabel } from "./textures/textTextures";
+import { hoverHandlers } from "../interactions/hoverLabel";
 
 const DRAWER_LABELS = [
     { label: "Projects", accent: "#d39a35" },
@@ -88,13 +89,7 @@ function Drawers({ position = [2.35, 0, -0.37] }) {
                         e.stopPropagation();
                         handleDrawerToggle(idx, item.label);
                     }}
-                    onPointerOver={(e) => {
-                        e.stopPropagation();
-                        document.body.style.cursor = "pointer";
-                    }}
-                    onPointerOut={() => {
-                        document.body.style.cursor = "default";
-                    }}
+                    {...hoverHandlers(item.label, "Open drawer")}
                 >
                     {/* Drawer Front Panel */}
                     <PixelBox size={[1.2, 0.42, 0.08]} material={materials.wood} position={[0, 0, 0.92]} castShadow receiveShadow />

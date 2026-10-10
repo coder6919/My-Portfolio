@@ -2,6 +2,7 @@ import { useMemo, useRef } from "react";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import { emitCharacterEvent, REQUEST_DRINK, mugState } from "../interactions/characterEvents";
+import { useHoverLabel } from "../interactions/hoverLabel";
 
 const PUFF_SECONDS = 1.6;
 const _viewAxis = new THREE.Vector3();
@@ -19,6 +20,7 @@ function CoffeeMug({ position = [-0.45, 2.525, 0.1], yaw = 0, onClick = null }) 
     const steamRef3 = useRef(null);
     const groupRef = useRef(null);
     const puffRef = useRef(0);
+    const hover = useHoverLabel("Coffee", "Click to take a sip");
     const tiltRef = useRef(0);
 
     const restPosition = useMemo(() => new THREE.Vector3(...position), [position]);
@@ -71,11 +73,7 @@ function CoffeeMug({ position = [-0.45, 2.525, 0.1], yaw = 0, onClick = null }) 
             ref={groupRef}
             position={position}
             onClick={handleClick}
-            onPointerOver={(e) => {
-                e.stopPropagation();
-                document.body.style.cursor = "pointer";
-            }}
-            onPointerOut={() => (document.body.style.cursor = "default")}
+            {...hover}
         >
             <group rotation={[0, yaw, 0]}>
                 {/* Ceramic Mug Outer Body */}

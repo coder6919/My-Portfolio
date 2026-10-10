@@ -2,9 +2,11 @@
 import { useRef, useState } from "react";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
+import { useHoverLabel } from "../interactions/hoverLabel";
 
 function WallSconce({ position = [-8.8, 4.5, -2.0] }) {
     const [sconceOn, setSconceOn] = useState(true);
+    const hover = useHoverLabel("Wall light", "Click to switch it on or off");
 
     const coreLightRef = useRef(null);
     const ambientSpreadRef = useRef(null);
@@ -50,8 +52,7 @@ function WallSconce({ position = [-8.8, 4.5, -2.0] }) {
             position={position}
             rotation={[0, Math.PI / 2, 0]}
             onClick={handleClick}
-            onPointerOver={() => (document.body.style.cursor = "pointer")}
-            onPointerOut={() => (document.body.style.cursor = "default")}
+            {...hover}
         >
             <mesh position={[0, 0, -0.06]} castShadow>
                 <cylinderGeometry args={[0.32, 0.32, 0.08, 16]} rotation={[Math.PI / 2, 0, 0]} />

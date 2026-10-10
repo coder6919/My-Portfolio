@@ -11,6 +11,7 @@ import { bookRow } from "./textures/pixelTextures";
 import { labeledBooks, photoTexture } from "./textures/textTextures";
 import { PALETTE } from "./textures/palette";
 import { LeafClump, TrailingVine } from "./Foliage";
+import { useHoverLabel } from "../interactions/hoverLabel";
 
 // A packed row of books: the spine texture on the front face, page edges on
 // top, dark wood elsewhere.
@@ -111,6 +112,7 @@ function Bookshelf({
     onBookClick = null,
 }) {
     const m = getMaterials();
+    const booksHover = useHoverLabel("Bookshelf", "Technical foundation");
 
     return (
         <group position={position} rotation={rotation}>
@@ -151,8 +153,7 @@ function Bookshelf({
                     e.stopPropagation();
                     if (onBookClick) onBookClick("all");
                 }}
-                onPointerOver={() => (document.body.style.cursor = "pointer")}
-                onPointerOut={() => (document.body.style.cursor = "default")}
+                {...booksHover}
             >
                 <BookRow size={[2.0, 1.55, 0.95]} seed="main" labeled />
             </group>

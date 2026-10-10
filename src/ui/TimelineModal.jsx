@@ -1,4 +1,4 @@
-import { experienceData, educationData } from "../data/portfolioData";
+import { experienceData, educationData, profileData } from "../data/portfolioData";
 
 export default function TimelineModal({ onClose }) {
     return (
@@ -28,8 +28,8 @@ export default function TimelineModal({ onClose }) {
                         <span className="text-[10px] text-sky-400 font-bold uppercase tracking-wider bg-sky-500/10 px-2 py-0.5 rounded border border-sky-500/20">
                             Present • 2026
                         </span>
-                        <h3 className="text-sm font-bold text-white pt-1">Software Engineer (Full Stack & AI/ML)</h3>
-                        <p className="text-xs text-slate-400">Open to Relocate • Actively building production applications & ML pipelines</p>
+                        <h3 className="text-sm font-bold text-white pt-1">{profileData.title} • {profileData.subtitle}</h3>
+                        <p className="text-xs text-slate-400">Open to Relocate • Building RAG pipelines, LLM orchestration & agentic AI systems</p>
                     </div>
 
                     {/* Work Experience */}
