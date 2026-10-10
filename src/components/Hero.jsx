@@ -1,29 +1,27 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Zap, ShieldCheck, Cpu, ArrowRight } from "lucide-react";
+import { Sparkles, ArrowRight, Terminal } from "lucide-react";
 
 const Hero = () => {
-  // Animation variants for the "System Boot" effect
   const containerVars = {
     initial: { opacity: 0 },
     animate: {
       opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.3 }
+      transition: { staggerChildren: 0.09, delayChildren: 0.15 }
     }
   };
 
   const itemVars = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+    initial: { opacity: 0, y: 14 },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
   };
 
-  return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20">
-      {/* Background Layer: The Pattern from your CSS */}
-      <div className="absolute inset-0 custom-grid opacity-20 pointer-events-none" />
+  const stack = ["Python", "FastAPI", "LangChain", "RAG", "PyTorch", "React"];
 
-      {/* Ambient Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand/10 blur-[120px] rounded-full pointer-events-none" />
+  return (
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-24 pb-28">
+      <div className="absolute inset-0 custom-grid opacity-30 pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[640px] bg-brand/[0.08] blur-[140px] rounded-full pointer-events-none" />
 
       <motion.div
         variants={containerVars}
@@ -31,149 +29,107 @@ const Hero = () => {
         animate="animate"
         className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center"
       >
-        {/* Top Badge: System Status */}
         <motion.div
           variants={itemVars}
           className="flex items-center gap-2 px-3 py-1 border border-brand/30 bg-brand/5 rounded-full mb-8"
         >
           <div className="w-2 h-2 rounded-full bg-brand animate-pulse" />
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-brand">
-            System Optimized: 99.9% Uptime
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand">
+            Open to AI/ML Engineering Roles
           </span>
         </motion.div>
 
-        {/* Main Heading */}
         <motion.h1
           variants={itemVars}
-          className="text-6xl md:text-8xl lg:text-9xl font-black italic tracking-tighter uppercase leading-[0.9]"
+          className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter uppercase leading-[0.92]"
         >
           Syed <span className="text-brand">Saifuddin</span>
         </motion.h1>
 
         <motion.p
           variants={itemVars}
-          className="mt-6 text-zinc-400 max-w-2xl text-lg font-medium leading-relaxed"
+          className="mt-6 text-ink-2 max-w-2xl text-lg font-medium leading-relaxed"
         >
-          Full-Stack Engineer specializing in <span className="text-white font-bold">MERN</span> & <span className="text-white font-bold">Java Microservices</span>.
-          Obsessed with building low-latency, scalable cloud architectures that hit <span className="text-brand">100 scores</span> on Lighthouse.
+          AI/ML Engineer building <span className="text-ink font-bold">LLM-powered applications</span> and{" "}
+          <span className="text-ink font-bold">RAG pipelines</span> — with a full-stack engineering
+          foundation to actually ship them. FastAPI, LangChain, PyTorch and the OpenAI &amp; Anthropic
+          APIs, end to end.
         </motion.p>
 
-        {/* CTA Buttons */}
         <motion.div variants={itemVars} className="mt-10 flex flex-wrap gap-4 justify-center">
-
-          {/* VIEW PROJECTS: Links to #projects section */}
           <a href="#projects">
-            <button className="group relative px-8 py-4 bg-brand text-black font-black uppercase italic tracking-tighter overflow-hidden cursor-pointer">
-              <span className="relative z-10 flex items-center gap-2">
+            <button className="group relative px-8 py-4 bg-brand text-brand-ink font-black uppercase tracking-tighter overflow-hidden cursor-pointer rounded-xl">
+              <span className="relative z-10 flex items-center gap-2 whitespace-nowrap">
                 View Projects <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </span>
-              {/* Hover fill effect */}
-              <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+              <div className="absolute inset-0 bg-ink translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
             </button>
           </a>
 
-          {/* DOWNLOAD RESUME: Links to the file in /public */}
-          <a
-            href="/Syed_Saifuddin_ResuMe.pdf"
-            download="Syed_Saifuddin_Resume.pdf"
-          >
-            <button className="px-8 py-4 border border-white/10 hover:border-brand/50 transition-colors text-white font-black uppercase italic tracking-tighter bg-white/5 cursor-pointer">
-              Download Resume
+          <a href="#hire-me">
+            <button className="px-8 py-4 border border-white/10 hover:border-brand/50 transition-colors text-ink font-black uppercase tracking-tighter bg-white/5 cursor-pointer rounded-xl whitespace-nowrap">
+              Work With Me
             </button>
           </a>
-
         </motion.div>
 
-        {/* Floating Performance Overlay (Your 92 Score) */}
+        {/* Floating status readout — honest, no fabricated metrics */}
         <motion.div
-          animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -right-2 top-0 hidden lg:block"
+          animate={{ y: [0, -8, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -right-4 top-4 hidden lg:block"
         >
-          <div className="p-4 bg-card border-2 border-brand/20 rounded-2xl shadow-2xl rotate-6">
-            <div className="flex items-center gap-4">
-              <div className="relative w-16 h-16 rounded-full border-4 border-brand flex items-center justify-center">
-                <span className="text-2xl font-black text-brand italic">92</span>
-              </div>
-              <div>
-                <p className="text-[10px] font-black uppercase text-zinc-500">PageSpeed</p>
-                <p className="text-sm font-black text-white italic">Optimized</p>
-              </div>
+          <div className="p-4 bg-card border border-white/10 rounded-2xl shadow-xl w-52">
+            <div className="flex items-center gap-2 mb-3 text-brand">
+              <Terminal size={14} />
+              <span className="text-[9px] font-black uppercase tracking-widest font-mono">Currently building</span>
             </div>
-            <div className="mt-4 flex gap-2">
-              <div className="w-2 h-2 rounded-full bg-emerald-500" />
-              <div className="w-2 h-2 rounded-full bg-emerald-500" />
-              <div className="w-2 h-2 rounded-full bg-emerald-500" />
-              <div className="w-2 h-2 rounded-full bg-zinc-700" />
-            </div>
+            <p className="text-sm font-bold text-ink leading-snug">
+              A retrieval-augmented agent, from embedding pipeline to chat UI.
+            </p>
           </div>
         </motion.div>
-        {/* --- FLOATING LATENCY CARD (Bottom Left) --- */}
+
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute left-1 bottom-[20%] hidden lg:block z-20"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute left-0 bottom-[8%] hidden lg:block z-20"
         >
-          <div className="p-4 bg-card border-2 border-brand/20 rounded-2xl shadow-2xl -rotate-6 backdrop-blur-md bg-black/80">
-            <div className="flex items-center gap-4">
-              {/* Mini Visual Graph */}
-              <div className="flex items-end gap-[2px] h-10 w-12">
-                <motion.div animate={{ height: [10, 25, 15] }} transition={{ repeat: Infinity, duration: 1.5 }} className="w-2 bg-brand/30" />
-                <motion.div animate={{ height: [20, 35, 25] }} transition={{ repeat: Infinity, duration: 2.1 }} className="w-2 bg-brand/60" />
-                <motion.div animate={{ height: [15, 30, 20] }} transition={{ repeat: Infinity, duration: 1.8 }} className="w-2 bg-brand" />
-              </div>
-
-              <div>
-                <p className="text-[9px] font-black uppercase text-zinc-500 tracking-widest">Avg Latency</p>
-                <div className="flex items-baseline gap-1">
-                  <p className="text-2xl font-black text-white italic">179</p>
-                  <span className="text-brand font-bold text-xs">ms</span>
-                </div>
-              </div>
+          <div className="p-4 bg-card/90 border border-white/10 rounded-2xl shadow-xl backdrop-blur-md">
+            <div className="flex items-center gap-2 text-brand mb-2">
+              <Sparkles size={14} />
+              <span className="text-[9px] font-black uppercase tracking-widest font-mono">Core stack</span>
             </div>
-
-            {/* Status Bar */}
-            <div className="mt-3 flex items-center justify-between border-t border-white/10 pt-2">
-              <span className="text-[7px] font-mono text-zinc-500 uppercase">Response: Stable</span>
-              <div className="flex gap-1">
-                <div className="w-1 h-1 rounded-full bg-brand" />
-                <div className="w-1 h-1 rounded-full bg-brand" />
-                <div className="w-1 h-1 rounded-full bg-brand" />
-              </div>
+            <div className="flex flex-wrap gap-1.5 max-w-[180px]">
+              {["FastAPI", "LangChain", "PyTorch"].map((t) => (
+                <span key={t} className="text-[9px] font-bold text-ink-2 border border-white/10 rounded-full px-2 py-0.5">
+                  {t}
+                </span>
+              ))}
             </div>
           </div>
         </motion.div>
       </motion.div>
 
-      {/* Bottom Metrics Bar */}
       <motion.div
-        initial={{ y: 100 }}
-        animate={{ y: 0 }}
-        transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-0 w-full border-t border-white/5 bg-card/50 backdrop-blur-md py-6"
+        initial={{ y: 60, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.9, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute bottom-0 w-full border-t border-white/5 bg-card/50 backdrop-blur-md py-5"
       >
-        <div className="container mx-auto px-6 flex flex-wrap justify-between items-center gap-8">
-          <MetricItem icon={<Zap size={16} />} label="Latency" value="179ms" />
-          <MetricItem icon={<ShieldCheck size={16} />} label="Reliability" value="99.9%" />
-          <MetricItem icon={<Cpu size={16} />} label="Load Test" value="10+ VU" />
-          <div className="hidden sm:block h-8 w-[1px] bg-white/10" />
-          <div className="flex gap-4">
-            <span className="text-[10px] font-black text-zinc-500 uppercase tracking-widest">Stack: React • Spring Boot • AWS • Docker • Java • JavaScript • Node</span>
+        <div className="container mx-auto px-6 flex flex-wrap justify-center md:justify-between items-center gap-4">
+          <span className="text-[10px] font-black text-faint uppercase tracking-widest hidden md:block">Stack</span>
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+            {stack.map((s) => (
+              <span key={s} className="text-[10px] font-mono font-medium text-muted uppercase tracking-wider">
+                {s}
+              </span>
+            ))}
           </div>
         </div>
       </motion.div>
     </section>
   );
 };
-
-const MetricItem = ({ icon, label, value }) => (
-  <div className="flex items-center gap-3">
-    <div className="text-brand">{icon}</div>
-    <div>
-      <p className="text-[8px] font-black uppercase text-zinc-500 tracking-widest">{label}</p>
-      <p className="text-sm font-black text-white italic">{value}</p>
-    </div>
-  </div>
-);
 
 export default Hero;

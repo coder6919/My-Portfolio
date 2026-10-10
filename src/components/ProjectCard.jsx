@@ -95,7 +95,7 @@ const ProjectCard = ({ title, description, stack, screenshots = [], thumbnail, m
             </div>
 
             {/* Title */}
-            <h3 className="text-2xl font-black text-white leading-tight uppercase italic tracking-tighter mb-2 drop-shadow-md">
+            <h3 className="text-2xl font-black text-white leading-tight uppercase tracking-tighter mb-2 drop-shadow-md">
               {title}
             </h3>
 

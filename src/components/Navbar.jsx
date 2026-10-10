@@ -13,11 +13,10 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Terminal", href: "#home" },
     { name: "Projects", href: "#projects" },
     { name: "Stack", href: "#stack" },
     { name: "History", href: "#experience" },
-    { name: "Education", href: "#education"},
+    { name: "Reviews", href: "#reviews" },
   ];
 
   return (
@@ -58,15 +57,22 @@ const Navbar = () => {
           {/* Action Buttons */}
           <div className="flex items-center gap-2">
             <div className="hidden lg:flex items-center gap-2 px-4 h-10 border border-white/5 bg-white/5 rounded-xl mr-2">
-               <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-               <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest">PageSpeed: 92</span>
+               <div className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse" />
+               <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest">Open to work</span>
             </div>
-            
-            <a href="https://github.com/coder6919" target="_blank" className="p-2.5 text-zinc-400 hover:text-white transition-colors bg-white/5 rounded-xl border border-white/5">
+
+            <a
+              href="#hire-me"
+              className="hidden sm:flex items-center h-10 px-4 bg-brand text-brand-ink text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-ink transition-colors"
+            >
+              Hire Me
+            </a>
+
+            <a href="https://github.com/coder6919" target="_blank" rel="noreferrer" className="p-2.5 text-zinc-400 hover:text-white transition-colors bg-white/5 rounded-xl border border-white/5">
               <Github size={18} />
             </a>
-            
-            <button 
+
+            <button
               onClick={() => setMobileMenu(!mobileMenu)}
               className="md:hidden p-2.5 text-brand bg-brand/10 rounded-xl border border-brand/20"
             >
@@ -79,7 +85,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenu && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -87,15 +93,22 @@ const Navbar = () => {
           >
             <div className="flex flex-col gap-6">
               {navLinks.map(link => (
-                <a 
-                  key={link.name} 
+                <a
+                  key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenu(false)}
-                  className="text-2xl font-black italic uppercase tracking-tighter text-white hover:text-brand"
+                  className="text-2xl font-black uppercase tracking-tighter text-white hover:text-brand"
                 >
                   {link.name}
                 </a>
               ))}
+              <a
+                href="#hire-me"
+                onClick={() => setMobileMenu(false)}
+                className="text-2xl font-black uppercase tracking-tighter text-brand"
+              >
+                Hire Me
+              </a>
             </div>
           </motion.div>
         )}

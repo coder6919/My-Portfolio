@@ -34,16 +34,16 @@ const Education = () => {
         <section id="education" className="py-32 relative bg-[#030303] overflow-hidden">
             {/* Background CAD Grid */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-                style={{ backgroundImage: `radial-gradient(#8ed500 1px, transparent 1px)`, backgroundSize: '30px 30px' }} />
+                style={{ backgroundImage: `radial-gradient(var(--color-brand) 1px, transparent 1px)`, backgroundSize: '30px 30px' }} />
 
             <div className="container mx-auto px-6 relative z-10">
 
                 {/* Main Heading: Architecture Protocol */}
                 <div className="flex items-center gap-4 mb-24">
-                    <div className="p-3 bg-brand/10 border border-brand/20 rounded-xl shadow-[0_0_20px_rgba(142,213,0,0.15)]">
+                    <div className="p-3 bg-brand/10 border border-brand/20 rounded-xl">
                         <GraduationCap className="text-brand" size={24} />
                     </div>
-                    <h2 className="text-4xl font-black italic uppercase tracking-tighter text-white">
+                    <h2 className="text-4xl font-black uppercase tracking-tighter text-ink">
                         Architecture <span className="text-brand">Protocol_</span>
                     </h2>
                 </div>
@@ -72,7 +72,7 @@ const Education = () => {
                             >
                                 {/* Information Card */}
                                 <div className="w-full md:w-[45%] group">
-                                    <div className="relative p-7 bg-card border border-white/10 rounded-none transition-all duration-500 hover:border-brand/50 hover:shadow-[0_0_40px_rgba(142,213,0,0.05)]">
+                                    <div className="relative p-7 bg-card border border-white/10 rounded-none transition-all duration-500 hover:border-brand/50 hover:bg-card-2">
 
                                         {/* ID Tag [01] */}
                                         <div className="absolute top-0 right-0 px-3 py-1 bg-white/5 border-l border-b border-white/10 text-[9px] font-mono text-zinc-600 group-hover:text-brand">
@@ -88,7 +88,7 @@ const Education = () => {
                                         </div>
 
                                         {/* Main Content */}
-                                        <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter leading-[1.1] mb-2">
+                                        <h3 className="text-2xl font-black text-ink uppercase tracking-tighter leading-[1.1] mb-2">
                                             {edu.title}
                                         </h3>
                                         <p className="text-brand font-bold text-sm uppercase tracking-tight">
@@ -105,7 +105,7 @@ const Education = () => {
 
                                 {/* Central Connector Node */}
                                 <div className="absolute left-0 md:left-1/2 w-10 h-10 bg-bg border border-white/10 rounded-none flex items-center justify-center -translate-x-1/2 z-10 hidden md:flex">
-                                    <div className="w-2 h-2 bg-brand rounded-full shadow-[0_0_10px_#8ed500]" />
+                                    <div className="w-2 h-2 bg-brand rounded-full" />
                                 </div>
 
                                 <div className="hidden md:block w-[45%]" />
@@ -124,7 +124,7 @@ const Education = () => {
                 >
                     <div className="inline-block border-2 border-dashed border-brand/40 p-6 bg-brand/5 backdrop-blur-sm relative group">
                         {/* Final Seal Icon */}
-                        <div className="absolute -top-4 -right-4 bg-bg p-2 border border-brand/20 shadow-[0_0_15px_rgba(142,213,0,0.3)]">
+                        <div className="absolute -top-4 -right-4 bg-bg p-2 border border-brand/20">
                             <ShieldCheck size={24} className="text-brand" />
                         </div>
 
@@ -134,7 +134,7 @@ const Education = () => {
                         </div>
 
                         {/* The main status line */}
-                        <p className="text-4xl font-black text-brand italic leading-none uppercase tracking-tighter drop-shadow-[0_0_10px_rgba(142,213,0,0.2)]">
+                        <p className="text-4xl font-black text-brand leading-none uppercase tracking-tighter">
                             Approved_For_Dev
                         </p>
 
@@ -150,7 +150,7 @@ const Education = () => {
                         </div>
 
                         {/* Optional: Add a "Build Complete" watermark in the corner of the stamp */}
-                        <div className="absolute -bottom-2 -left-2 bg-brand text-black text-[7px] font-black px-1 uppercase italic">
+                        <div className="absolute -bottom-2 -left-2 bg-brand text-brand-ink text-[7px] font-black px-1 uppercase">
                             Success_Verified
                         </div>
                     </div>

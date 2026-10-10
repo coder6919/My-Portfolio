@@ -58,6 +58,20 @@ const LeetCodeCard = ({ username = "SyedSaifuddin" }) => {
   const medPer = (data.mediumSolved / (data.totalMedium || 1)) * 100;
   const hardPer = (data.hardSolved / (data.totalHard || 1)) * 100;
 
+  // The live API has no top-level `acceptanceRate` field — it ships a
+  // per-difficulty `totalSubmissions` array (accepted count vs. submissions).
+  // Derive the overall rate from the "All" entry; fall back to the flat
+  // FALLBACK_DATA field when offline.
+  const acceptanceRate = (() => {
+    const allSubs = Array.isArray(data.totalSubmissions)
+      ? data.totalSubmissions.find((s) => s.difficulty === "All")
+      : null;
+    if (allSubs && allSubs.submissions) {
+      return (allSubs.count / allSubs.submissions) * 100;
+    }
+    return data.acceptanceRate ?? 0;
+  })();
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
@@ -71,7 +85,7 @@ const LeetCodeCard = ({ username = "SyedSaifuddin" }) => {
         <div className="p-4 border-b border-white/5 bg-white/5 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Code2 className="text-brand" size={18} />
-            <span className="font-black italic uppercase text-[10px] tracking-widest text-white">LeetCode Protocol</span>
+            <span className="font-black uppercase text-[10px] tracking-widest text-white">LeetCode Protocol</span>
           </div>
           <div className="flex items-center gap-1.5">
             <div className={`w-1.5 h-1.5 rounded-full ${isLive ? 'bg-brand animate-pulse' : 'bg-zinc-600'}`} />
@@ -90,7 +104,7 @@ const LeetCodeCard = ({ username = "SyedSaifuddin" }) => {
             <div className="mb-6">
               <span className="text-zinc-500 text-[9px] font-black uppercase tracking-widest">Efficiency Metrics</span>
               <div className="flex items-baseline gap-2 mt-1">
-                <h4 className="text-5xl font-black text-white italic leading-none">
+                <h4 className="text-5xl font-black text-white leading-none">
                     {data.totalSolved}
                 </h4>
                 <span className="text-zinc-500 font-bold text-xs">/ {data.totalQuestions}</span>
@@ -110,7 +124,7 @@ const LeetCodeCard = ({ username = "SyedSaifuddin" }) => {
                   <Trophy size={10} />
                   <span className="text-[8px] font-black uppercase tracking-tighter">Global Rank</span>
                 </div>
-                <span className="text-xs font-black text-white italic">
+                <span className="text-xs font-black text-white">
                     #{data.ranking ? data.ranking.toLocaleString() : "N/A"}
                 </span>
               </div>
@@ -119,8 +133,8 @@ const LeetCodeCard = ({ username = "SyedSaifuddin" }) => {
                   <Target size={10} />
                   <span className="text-[8px] font-black uppercase tracking-tighter">Acceptance</span>
                 </div>
-                <span className="text-xs font-black text-white italic">
-                    {data.acceptanceRate ? Number(data.acceptanceRate).toFixed(1) : "0"}%
+                <span className="text-xs font-black text-white">
+                    {acceptanceRate.toFixed(1)}%
                 </span>
               </div>
             </div>

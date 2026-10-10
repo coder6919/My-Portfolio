@@ -1,26 +1,40 @@
+/* index.css */
 @import "tailwindcss";
 
-@theme {
-  --color-brand: #0EA5E9;
-  --color-bg: #080B12;
-  --color-surface: #111827;
-  --color-warning: #F59E0B;
+html,
+body,
+#root {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #09080e;
 }
 
-@layer base {
-  html.lenis { height: auto; }
-  .lenis-smooth { scroll-behavior: auto !important; }
-  
-  body {
-    @apply bg-bg text-slate-200 overflow-x-hidden;
-    font-family: 'Geist', sans-serif;
-  }
+body {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* THE SIGNATURE GRID */
-@utility blueprint-grid {
-  background-image: 
-    linear-gradient(to right, rgba(14, 165, 233, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
+* {
+  box-sizing: border-box;
+}
+
+.workspace-app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.workspace {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* The scene renders at low resolution; upscale it with hard pixel edges. */
+.workspace canvas {
+  image-rendering: pixelated;
 }
